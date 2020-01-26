@@ -55,4 +55,5 @@ names(tidy_df)<-gsub("^t","Time",names(tidy_df))
 names(tidy_df)<-gsub("^f|Freq","Frequency",names(tidy_df))
 
 #creating independent tidy data set with the average of each variable for each activity and each subject.
-tidy_df %>% group_by(Subjects,Activity) %>% summarise_all(mean)
+step5_df<-tidy_df %>% group_by(Subjects,Activity) %>% summarise_all(mean)
+write.table(step5_df, "tidy_df.txt", row.name=FALSE)
